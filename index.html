@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronograma Mestrado — PPGMDS / UFPB 2026–2028</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  :root {
+    --navy:    #1B2A4A;
+    --teal:    #2E8B8B;
+    --gold:    #E8A020;
+    --mint:    #d6f0ee;
+    --lavend:  #eae8f5;
+    --amber:   #fff4dc;
+    --obr:     #c8e6fa;
+    --opt:     #d4edda;
+    --white:   #ffffff;
+    --gray-lt: #f5f7fa;
+    --gray-bd: #dde2ea;
+    --text:    #1a2438;
+    --muted:   #64748b;
+    --radius:  10px;
+    --shadow:  0 2px 16px rgba(27,42,74,.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f0f3f8;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ─────────────────────────────────────── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3f6e 60%, #1e5f6e 100%);
+    color: white;
+    padding: 2.4rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(46,139,139,.18);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(232,160,32,.10);
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -.5px;
+    line-height: 1.2;
+  }
+  header p {
+    margin-top: .5rem;
+    font-size: .95rem;
+    opacity: .82;
+    font-style: italic;
+  }
+  .header-meta {
+    display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.2rem;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: .3rem .9rem;
+    font-size: .82rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+  }
+  .meta-pill span { opacity: .7; font-weight: 400; }
+
+  /* ── TABS ──────────────────────────────────────── */
+  .tab-bar {
+    background: var(--white);
+    border-bottom: 2px solid var(--gray-bd);
+    display: flex; overflow-x: auto; gap: 0;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  }
+  .tab-bar button {
+    padding: .85rem 1.4rem;
+    border: none; background: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .88rem; font-weight: 600;
+    color: var(--muted); cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: color .2s, border-color .2s;
+  }
+  .tab-bar button:hover { color: var(--teal); }
+  .tab-bar button.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+  /* ── MAIN ──────────────────────────────────────── */
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── SECTION TITLE ─────────────────────────────── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--navy);
+    margin: 2rem 0 1.1rem;
+    display: flex; align-items: center; gap: .7rem;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  /* ── TRIM CARD ─────────────────────────────────── */
+  .trim-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.8rem;
+    overflow: hidden;
+    border: 1px solid var(--gray-bd);
+  }
+  .trim-header {
+    background: linear-gradient(135deg, var(--teal), #1e6e6e);
+    color: white;
+    padding: .85rem 1.4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: .5rem;
+  }
+  .trim-header h3 { font-size: 1rem; font-weight: 700; }
+  .trim-header small { opacity: .85; font-size: .82rem; }
+  .trim-summary {
+    display: flex; gap: .8rem;
+    padding: .6rem 1.4rem;
+    background: var(--gray-lt);
+    border-bottom: 1px solid var(--gray-bd);
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-size: .75rem; font-weight: 700;
+    padding: .2rem .7rem; border-radius: 12px; letter-spacing: .3px;
+  }
+  .badge-obr  { background: var(--obr);  color: #1565a8; }
+  .badge-opt  { background: var(--opt);  color: #1a6b3a; }
+  .badge-diss { background: var(--amber); color: #8a5700; }
+  .badge-tot  { background: var(--navy); color: white; }
+
+  /* ── TABLE ─────────────────────────────────────── */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .87rem; }
+  thead th {
+    background: var(--navy); color: white;
+    padding: .65rem .9rem; text-align: left;
+    font-size: .82rem; font-weight: 600; letter-spacing: .3px;
+  }
+  tbody tr { border-bottom: 1px solid var(--gray-bd); transition: background .15s; }
+  tbody tr:hover { background: #f0f4fb; }
+  tbody td { padding: .6rem .9rem; vertical-align: middle; }
+  tbody td:first-child { font-weight: 700; font-size: .78rem; text-align: center; }
+  .row-obr td { background: #eef6fd; }
+  .row-obr td:first-child { color: #1565a8; }
+  .row-opt td { background: #edfaf2; }
+  .row-opt td:first-child { color: #1a6b3a; }
+  .row-diss td { background: #fffaef; }
+  .row-diss td:first-child { color: #8a5700; }
+  .subject-name { font-weight: 600; color: var(--navy); }
+  .modular-tag {
+    display: inline-block; font-size: .72rem; background: var(--gold);
+    color: white; border-radius: 8px; padding: .1rem .45rem; margin-top: .15rem;
+  }
+
+  /* ── HORÁRIO GRID ──────────────────────────────── */
+  .schedule-grid {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 1.8rem;
+    border: 1px solid var(--gray-bd);
+  }
+  .schedule-header {
+    background: linear-gradient(135deg, var(--teal), #1e6e6e);
+    color: white; padding: .85rem 1.4rem;
+    font-weight: 700;
+  }
+  .grid-wrap { overflow-x: auto; }
+  .schedule-table { width: 100%; border-collapse: collapse; font-size: .83rem; min-width: 640px; }
+  .schedule-table th {
+    background: var(--navy); color: white;
+    padding: .55rem .6rem; text-align: center;
+    font-size: .8rem; font-weight: 600;
+  }
+  .schedule-table td {
+    border: 1px solid var(--gray-bd);
+    padding: .55rem .6rem; text-align: center;
+    vertical-align: middle; min-height: 58px; height: 58px;
+    font-size: .78rem;
+  }
+  .time-cell { background: var(--gray-lt); font-weight: 700; color: var(--navy); white-space: nowrap; }
+  .class-cell {
+    background: var(--obr); color: #1B2A4A;
+    border-radius: 4px; padding: .3rem .5rem;
+    font-weight: 600; line-height: 1.3;
+  }
+  .class-cell.opt { background: var(--opt); }
+  .class-cell.modular { background: #fde9c0; }
+  .empty-cell { color: #ccc; }
+
+  /* ── MARCOS TIMELINE ───────────────────────────── */
+  .timeline { display: flex; flex-direction: column; gap: 1rem; margin-top: .5rem; }
+  .tl-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    background: white; border-radius: var(--radius);
+    border: 1px solid var(--gray-bd);
+    box-shadow: 0 1px 6px rgba(0,0,0,.06);
+    padding: 1rem 1.2rem;
+    transition: box-shadow .2s;
+  }
+  .tl-item:hover { box-shadow: 0 4px 18px rgba(27,42,74,.12); }
+  .tl-num {
+    min-width: 36px; height: 36px;
+    background: var(--teal); color: white;
+    border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    font-weight: 700; font-size: .9rem; flex-shrink: 0;
+  }
+  .tl-body { flex: 1; }
+  .tl-title { font-weight: 700; color: var(--navy); font-size: .95rem; }
+  .tl-desc  { color: var(--muted); font-size: .85rem; margin-top: .25rem; line-height: 1.5; }
+  .tl-meta  { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: .55rem; align-items: center; }
+  .tl-date  {
+    background: var(--navy); color: white;
+    font-size: .75rem; font-weight: 700;
+    padding: .2rem .7rem; border-radius: 12px;
+  }
+  .tl-status {
+    font-size: .78rem; font-weight: 600; padding: .2rem .7rem;
+    border-radius: 12px;
+  }
+  .status-pending  { background: #fff3cd; color: #856404; }
+  .status-done     { background: #d4edda; color: #155724; }
+  .status-alert    { background: #f8d7da; color: #721c24; }
+  .tl-link { font-size: .8rem; color: var(--teal); text-decoration: none; font-weight: 600; }
+  .tl-link:hover { text-decoration: underline; }
+
+  /* ── STATUS TOGGLE ─────────────────────────────── */
+  .status-toggle {
+    cursor: pointer; user-select: none;
+    padding: .2rem .7rem; border-radius: 12px;
+    font-size: .78rem; font-weight: 700;
+    border: none; transition: transform .1s;
+  }
+  .status-toggle:active { transform: scale(.95); }
+
+  /* ── NOTES ─────────────────────────────────────── */
+  .notes-panel {
+    background: white; border-radius: var(--radius);
+    box-shadow: var(--shadow); border: 1px solid var(--gray-bd);
+    overflow: hidden; margin-bottom: 1.5rem;
+  }
+  .notes-header {
+    background: linear-gradient(135deg, var(--navy), #2a3f6e);
+    color: white; padding: .85rem 1.4rem;
+    font-weight: 700; font-size: 1rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .notes-body { padding: 1.2rem; }
+  .notes-area {
+    width: 100%; min-height: 160px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .9rem; color: var(--text);
+    border: 1.5px solid var(--gray-bd); border-radius: 7px;
+    padding: .9rem 1rem; resize: vertical;
+    background: var(--gray-lt); outline: none;
+    transition: border-color .2s, background .2s;
+  }
+  .notes-area:focus { border-color: var(--teal); background: white; }
+  .note-actions { display: flex; gap: .7rem; margin-top: .8rem; flex-wrap: wrap; }
+  .btn {
+    padding: .45rem 1.1rem; border-radius: 8px; border: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .84rem; font-weight: 700; cursor: pointer;
+    transition: filter .2s, transform .1s;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:active { transform: scale(.97); }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-danger  { background: #e55; color: white; }
+  .btn-outline { background: white; color: var(--navy); border: 2px solid var(--navy); }
+
+  /* ── SAVED NOTES LIST ──────────────────────────── */
+  .saved-notes { margin-top: 1.1rem; display: flex; flex-direction: column; gap: .7rem; }
+  .note-item {
+    background: var(--gray-lt); border-radius: 8px;
+    border-left: 4px solid var(--teal);
+    padding: .8rem 1rem; position: relative;
+  }
+  .note-item .note-date { font-size: .75rem; color: var(--muted); margin-bottom: .25rem; }
+  .note-item .note-text { font-size: .88rem; white-space: pre-wrap; line-height: 1.5; }
+  .note-item .note-del {
+    position: absolute; top: .5rem; right: .7rem;
+    background: none; border: none; cursor: pointer;
+    color: #bbb; font-size: 1.1rem; line-height: 1;
+  }
+  .note-item .note-del:hover { color: #e55; }
+  .note-author { font-weight: 700; color: var(--navy); font-size: .78rem; }
+
+  /* ── LINKS PAGE ─────────────────────────────────── */
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: .5rem; }
+  .link-card {
+    background: white; border-radius: var(--radius);
+    border: 1px solid var(--gray-bd); padding: 1rem 1.1rem;
+    display: flex; gap: .8rem; align-items: flex-start;
+    box-shadow: 0 1px 6px rgba(0,0,0,.05);
+    transition: box-shadow .2s;
+    text-decoration: none; color: var(--text);
+  }
+  .link-card:hover { box-shadow: 0 4px 18px rgba(27,42,74,.12); border-color: var(--teal); }
+  .link-icon {
+    width: 38px; height: 38px; border-radius: 9px;
+    background: var(--navy); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .link-info h4 { font-size: .9rem; font-weight: 700; color: var(--navy); }
+  .link-info p  { font-size: .8rem; color: var(--muted); margin-top: .2rem; line-height: 1.4; }
+
+  /* ── PROGRESS BAR ──────────────────────────────── */
+  .progress-section {
+    background: white; border-radius: var(--radius);
+    box-shadow: var(--shadow); border: 1px solid var(--gray-bd);
+    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
+  }
+  .progress-section h4 { font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+  .prog-row { margin-bottom: .9rem; }
+  .prog-label { display: flex; justify-content: space-between; font-size: .85rem; margin-bottom: .3rem; }
+  .prog-bar { height: 8px; background: var(--gray-bd); border-radius: 99px; overflow: hidden; }
+  .prog-fill { height: 100%; border-radius: 99px; transition: width .6s ease; }
+  .prog-obr  { background: linear-gradient(to right, var(--teal), #2cb5b5); }
+  .prog-opt  { background: linear-gradient(to right, #4caf50, #81c784); }
+  .prog-time { background: linear-gradient(to right, var(--gold), #f5c84a); }
+
+  /* ── PRINT ─────────────────────────────────────── */
+  @media print {
+    .tab-bar, .note-actions, .btn { display: none !important; }
+    .tab-panel { display: block !important; }
+    main { padding: 0; }
+  }
+
+  /* ── FOOTER ─────────────────────────────────────── */
+  .footer-bar {
+    background: var(--navy); color: rgba(255,255,255,.6);
+    text-align: center; font-size: .78rem; padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* ── ALERT BANNER ──────────────────────────────── */
+  .alert-banner {
+    background: var(--amber); border-left: 4px solid var(--gold);
+    border-radius: 7px; padding: .75rem 1.1rem;
+    font-size: .88rem; margin-bottom: .9rem;
+    display: flex; gap: .6rem; align-items: flex-start;
+  }
+  .alert-banner strong { color: #8a5700; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>Cronograma Acadêmico — PPGMDS / UFPB</h1>
+    <p style="font-size:1.05rem;font-style:normal;font-weight:600;opacity:.95;margin-top:.2rem;">👩‍🎓 Wandalúcia Neves</p>
+    <p>Programa de Pós-Graduação em Modelos de Decisão e Saúde · Mestrado 2026–2028</p>
+    <div class="header-meta">
+      <div class="meta-pill">🎓 Ingresso <span>março/2026</span></div>
+      <div class="meta-pill">📅 Prazo regular <span>fev/2028</span></div>
+      <div class="meta-pill">⏳ Prorrogação máx. <span>set/2028</span></div>
+      <div class="meta-pill">📊 Total: 32 créditos</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tab-bar">
+  <button class="active" onclick="showTab('cronograma')">📚 Cronograma</button>
+  <button onclick="showTab('horario')">🕐 Horários</button>
+  <button onclick="showTab('marcos')">🎯 Marcos & Prazos</button>
+  <button onclick="showTab('creditos')">📊 Créditos</button>
+  <button onclick="showTab('links')">🔗 Links & Formulários</button>
+  <button onclick="showTab('notas')">✏️ Anotações</button>
+</nav>
+
+<main>
+
+<!-- ═══════ TAB: CRONOGRAMA ══════════════════════════════════════════ -->
+<div id="tab-cronograma" class="tab-panel active">
+
+  <div class="section-title">Trimestre 1 — 2026.1</div>
+  <div class="trim-card">
+    <div class="trim-header">
+      <h3>📘 Trimestre 1 · 2026.1</h3>
+      <small>09 de março – 05 de junho de 2026</small>
+    </div>
+    <div class="trim-summary">
+      <span class="badge badge-obr">OBR: 10 cr.</span>
+      <span class="badge badge-opt">OPT: 3 cr.</span>
+      <span class="badge badge-tot">Total: 195h</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tipo</th><th>Disciplina</th><th>Docente</th><th>Horário</th><th>C.H.</th><th>Período</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-obr">
+            <td>OBR</td>
+            <td><div class="subject-name">Epidemiologia e Saúde</div></td>
+            <td>Rodrigo / Rafaela / Ricardo</td>
+            <td>Sexta-feira 08:00–12:00</td>
+            <td>45h</td>
+            <td>Mar–Jun</td>
+          </tr>
+          <tr class="row-obr">
+            <td>OBR</td>
+            <td><div class="subject-name">Modelos de Probabilidade e Inferência</div></td>
+            <td>Tarciana Liberal</td>
+            <td>Seg e Qua 13:00–16:00</td>
+            <td>60h</td>
+            <td>Mar–Jun</td>
+          </tr>
+          <tr class="row-obr">
+            <td>OBR</td>
+            <td><div class="subject-name">Álgebra Linear Computacional</div></td>
+            <td>Luiz Medeiros</td>
+            <td>Terça-feira 13:00–17:00</td>
+            <td>30h</td>
+            <td>Mar–Jun</td>
+          </tr>
+          <tr class="row-obr">
+            <td>OBR</td>
+            <td><div class="subject-name">Seminários em Modelos de Decisão e Saúde</div></td>
+            <td>Yuri e Alexandre</td>
+            <td>Sexta-feira 10:00–12:00</td>
+            <td>15h</td>
+            <td>Mar–Jun</td>
+          </tr>
+          <tr class="row-opt">
+            <td>OPT</td>
+            <td>
+              <div class="subject-name">Modelagem Epidemiológica em Saúde</div>
+              <div class="modular-tag">⚡ Modular</div>
+            </td>
+            <td>Suellen Andrade · Cristina Katya</td>
+            <td>Seg e Qua 07:00–12:00</td>
+            <td>45h</td>
+            <td>01/04–29/04 (Modular)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">Trimestre 2 — 2026.2</div>
+  <div class="trim-card">
+    <div class="trim-header">
+      <h3>📗 Trimestre 2 · 2026.2</h3>
+      <small>01 de julho – 18 de setembro de 2026</small>
+    </div>
+    <div class="trim-summary">
+      <span class="badge badge-obr">OBR: 4 cr.</span>
+      <span class="badge badge-opt">OPT: 6 cr.</span>
+      <span class="badge badge-tot">Total: 150h</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tipo</th><th>Disciplina</th><th>Docente</th><th>Horário</th><th>C.H.</th><th>Período</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-obr">
+            <td>OBR</td>
+            <td><div class="subject-name">Métodos de Tomada de Decisão</div></td>
+            <td>Marcelo Ferreira · Eufrásio Neto</td>
+            <td>Terça-feira 14:00–18:00</td>
+            <td>45h</td>
+            <td>Jul–Set</td>
+          </tr>
+          <tr class="row-obr">
+            <td>OBR</td>
+            <td><div class="subject-name">Seminários em Modelos de Decisão e Saúde</div></td>
+            <td>Yuri e Alexandre</td>
+            <td>Sexta-feira 10:00–12:00</td>
+            <td>15h</td>
+            <td>Jul–Set</td>
+          </tr>
+          <tr class="row-opt">
+            <td>OPT</td>
+            <td><div class="subject-name">Inquéritos Populacionais em Saúde</div></td>
+            <td>Hemílio Coelho</td>
+            <td>Segunda-feira 13:00–17:00</td>
+            <td>45h</td>
+            <td>Jul–Set</td>
+          </tr>
+          <tr class="row-opt">
+            <td>OPT</td>
+            <td><div class="subject-name">Demografia Estatística da Saúde</div></td>
+            <td>Everlane e Neir</td>
+            <td>Quinta-feira 08:00–12:00</td>
+            <td>45h</td>
+            <td>Jul–Set</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">Trimestre 3 — 2026.3</div>
+  <div class="trim-card">
+    <div class="trim-header">
+      <h3>📙 Trimestre 3 · 2026.3</h3>
+      <small>05 de outubro – 18 de dezembro de 2026</small>
+    </div>
+    <div class="trim-summary">
+      <span class="badge badge-obr">OBR: 1 cr.</span>
+      <span class="badge badge-opt">OPT: 6 cr.</span>
+      <span class="badge badge-tot">Total: 135h</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tipo</th><th>Disciplina</th><th>Docente</th><th>Horário</th><th>C.H.</th><th>Período</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-obr">
+            <td>OBR</td>
+            <td><div class="subject-name">Seminários em Modelos de Decisão e Saúde</div></td>
+            <td>Yuri e Alexandre</td>
+            <td>Sexta-feira 10:00–12:00</td>
+            <td>15h</td>
+            <td>Out–Dez</td>
+          </tr>
+          <tr class="row-opt">
+            <td>OPT</td>
+            <td><div class="subject-name">Métodos de Aprendizado de Máquina para Tomada de Decisão</div></td>
+            <td>Marcelo Ferreira</td>
+            <td>Quinta-feira 13:00–17:00</td>
+            <td>45h</td>
+            <td>Out–Dez</td>
+          </tr>
+          <tr class="row-opt">
+            <td>OPT</td>
+            <td><div class="subject-name">Políticas Públicas de Saúde</div></td>
+            <td>Juliana Sampaio</td>
+            <td>Quinta-feira 08:00–12:00</td>
+            <td>45h</td>
+            <td>Out–Dez</td>
+          </tr>
+          <tr class="row-opt">
+            <td>OPT</td>
+            <td><div class="subject-name">Tópicos Especiais — Visualização de Dados</div></td>
+            <td>Luiz Medeiros</td>
+            <td>Terça-feira 13:00–17:00</td>
+            <td>30h</td>
+            <td>Out–Dez</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">Trimestres 4–6 — 2027 em diante</div>
+  <div class="trim-card">
+    <div class="trim-header" style="background: linear-gradient(135deg,#8a5700,#c08020);">
+      <h3>📝 Trabalho de Dissertação · 2027–2028</h3>
+      <small>Matrícula contínua após integralização de créditos</small>
+    </div>
+    <div class="trim-summary">
+      <span class="badge badge-diss">Matrícula todo período</span>
+      <span class="badge badge-tot">Prazo: fev/2028</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Período</th><th>Atividade</th><th>Prazo-Limite</th><th>Observações</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-diss"><td>2027.1</td><td>Trabalho de Dissertação + Proficiência</td><td>Fev/2027 (prof.)</td><td>Aprovação em inglês — pré-req. para Pré-Banca</td></tr>
+          <tr class="row-diss"><td>2027.2</td><td>Trabalho de Dissertação + Pré-Banca</td><td>Ago/2027</td><td>Req. 20 dias antes; CRA ≥ 7,0; todos créditos integralizados</td></tr>
+          <tr class="row-diss"><td>2027.3</td><td>Trabalho de Dissertação</td><td>—</td><td>Finalização da dissertação e produção acadêmica</td></tr>
+          <tr class="row-diss"><td>2028.1</td><td>Defesa da Dissertação</td><td>Fev/2028</td><td>Req. 20 dias antes; banca: 2 orientadores + 2 especialistas + 2 suplentes</td></tr>
+          <tr class="row-diss"><td>Pós-defesa</td><td>Autodepósito + Diploma</td><td>90 dias após defesa</td><td>Versão final no Repositório UFPB; diploma após homologação</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert-banner"><span>⚠️</span><div><strong>Nota:</strong> Epidemiologia e Saúde — em dias de Seminário (1×/mês) a aula é remanejada para a tarde da sexta-feira. | Modelagem Epidemiológica: exclusivamente entre 01/04 e 29/04/2026. | Estágio Docência I (1 cr. prático, 30h) ainda precisa ser inserido no cronograma.</div></div>
+</div>
+
+<!-- ═══════ TAB: HORÁRIO ══════════════════════════════════════════════ -->
+<div id="tab-horario" class="tab-panel">
+
+<style>
+  /* ── Hora-a-hora table ───────────────────────────── */
+  .hh-wrap { overflow-x: auto; }
+  .hh-table {
+    width: 100%; border-collapse: collapse;
+    font-size: .82rem; min-width: 660px;
+  }
+  .hh-table th {
+    background: var(--navy); color: white;
+    padding: .55rem .7rem; text-align: center;
+    font-size: .8rem; font-weight: 700;
+    border: 1px solid #344d7a;
+  }
+  .hh-table td {
+    border: 1px solid var(--gray-bd);
+    padding: 0; vertical-align: middle;
+    text-align: center; font-size: .78rem;
+  }
+  .hh-time {
+    background: var(--gray-lt); font-weight: 700;
+    color: var(--navy); white-space: nowrap;
+    padding: .35rem .6rem; font-size: .78rem;
+  }
+  .hh-empty { color: #ccc; padding: .35rem; background: white; }
+  .hh-class {
+    display: flex; align-items: center; justify-content: center;
+    height: 100%; padding: .35rem .45rem;
+    font-weight: 600; line-height: 1.3; color: var(--navy);
+    background: var(--obr);
+  }
+  .hh-class.opt   { background: var(--opt);    color: #1a4d2e; }
+  .hh-class.mod   { background: #fde9c0;        color: #6b3d00; }
+  .hh-class.diss  { background: var(--amber);   color: #7a4a00; }
+  .hh-sep td {
+    background: #e8edf5; border: 1px solid var(--gray-bd);
+    height: 8px; padding: 0;
+  }
+</style>
+
+  <!-- ══ TRIMESTRE 1 ═════════════════════════════════════════════ -->
+  <div class="section-title">Horário Semanal — Trimestre 1 (2026.1)</div>
+  <div class="schedule-grid">
+    <div class="schedule-header">📅 Trimestre 1 · 09/03 – 05/06/2026 &nbsp;·&nbsp; <small style="opacity:.8;font-weight:400;">Legenda: <span style="background:var(--obr);padding:.1rem .4rem;border-radius:4px;font-size:.75rem;">OBR</span> <span style="background:var(--opt);padding:.1rem .4rem;border-radius:4px;font-size:.75rem;">OPT</span> <span style="background:#fde9c0;padding:.1rem .4rem;border-radius:4px;font-size:.75rem;">Modular</span></small></div>
+    <div class="hh-wrap">
+      <table class="hh-table">
+        <thead>
+          <tr>
+            <th style="width:90px">Horário</th>
+            <th>Segunda</th>
+            <th>Terça</th>
+            <th>Quarta</th>
+            <th>Quinta</th>
+            <th>Sexta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 07:00 -->
+          <tr>
+            <td class="hh-time">07:00–08:00</td>
+            <td rowspan="5"><div class="hh-class mod" style="height:100%;min-height:120px;flex-direction:column;gap:.2rem;">Modelagem<br>Epidemiológica<br><small style="font-weight:400;font-size:.72rem;">(Modular 01/04–29/04)</small></div></td>
+            <td class="hh-empty">—</td>
+            <td rowspan="5"><div class="hh-class mod" style="height:100%;min-height:120px;flex-direction:column;gap:.2rem;">Modelagem<br>Epidemiológica<br><small style="font-weight:400;font-size:.72rem;">(Modular 01/04–29/04)</small></div></td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 08:00 -->
+          <tr>
+            <td class="hh-time">08:00–09:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td rowspan="4"><div class="hh-class" style="height:100%;min-height:100px;flex-direction:column;">Epidemiologia<br>e Saúde</div></td>
+          </tr>
+          <!-- 09:00 -->
+          <tr>
+            <td class="hh-time">09:00–10:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 10:00 -->
+          <tr>
+            <td class="hh-time">10:00–11:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 11:00 -->
+          <tr>
+            <td class="hh-time">11:00–12:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- separator -->
+          <tr class="hh-sep"><td colspan="6"></td></tr>
+          <!-- 12:00 -->
+          <tr>
+            <td class="hh-time">12:00–13:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 13:00 – rowspan Seg(3h Inferência), Ter(4h Álgebra), Qua(3h Inferência), Sex(2h Seminários começa 10h já encerrou) -->
+          <tr>
+            <td class="hh-time">13:00–14:00</td>
+            <td rowspan="3"><div class="hh-class" style="height:100%;min-height:80px;flex-direction:column;">Prob. e<br>Inferência</div></td>
+            <td rowspan="4"><div class="hh-class" style="height:100%;min-height:100px;flex-direction:column;">Álgebra Linear<br>Computacional</div></td>
+            <td rowspan="3"><div class="hh-class" style="height:100%;min-height:80px;flex-direction:column;">Prob. e<br>Inferência</div></td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 14:00 -->
+          <tr>
+            <td class="hh-time">14:00–15:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 15:00 -->
+          <tr>
+            <td class="hh-time">15:00–16:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 16:00 -->
+          <tr>
+            <td class="hh-time">16:00–17:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- separator -->
+          <tr class="hh-sep"><td colspan="6"></td></tr>
+          <!-- Seminários nota -->
+          <tr>
+            <td class="hh-time" style="font-size:.72rem;line-height:1.2;">Sex 10–12h</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td><div class="hh-class" style="flex-direction:column;">Seminários<br><small style="font-weight:400;">(10–12h)</small></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ TRIMESTRE 2 ═════════════════════════════════════════════ -->
+  <div class="section-title">Horário Semanal — Trimestre 2 (2026.2)</div>
+  <div class="schedule-grid">
+    <div class="schedule-header">📅 Trimestre 2 · 01/07 – 18/09/2026</div>
+    <div class="hh-wrap">
+      <table class="hh-table">
+        <thead>
+          <tr>
+            <th style="width:90px">Horário</th>
+            <th>Segunda</th>
+            <th>Terça</th>
+            <th>Quarta</th>
+            <th>Quinta</th>
+            <th>Sexta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 08:00 -->
+          <tr>
+            <td class="hh-time">08:00–09:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td rowspan="4"><div class="hh-class opt" style="height:100%;min-height:100px;flex-direction:column;">Dem. Estatística<br>da Saúde</div></td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr>
+            <td class="hh-time">09:00–10:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr>
+            <td class="hh-time">10:00–11:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td rowspan="2"><div class="hh-class" style="height:100%;min-height:50px;flex-direction:column;">Seminários</div></td>
+          </tr>
+          <tr>
+            <td class="hh-time">11:00–12:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr class="hh-sep"><td colspan="6"></td></tr>
+          <tr>
+            <td class="hh-time">12:00–13:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 13:00 -->
+          <tr>
+            <td class="hh-time">13:00–14:00</td>
+            <td rowspan="4"><div class="hh-class opt" style="height:100%;min-height:100px;flex-direction:column;">Inquéritos<br>Populacionais</div></td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 14:00 -->
+          <tr>
+            <td class="hh-time">14:00–15:00</td>
+            <td rowspan="4"><div class="hh-class" style="height:100%;min-height:100px;flex-direction:column;">Tomada<br>de Decisão</div></td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 15:00 -->
+          <tr>
+            <td class="hh-time">15:00–16:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 16:00 -->
+          <tr>
+            <td class="hh-time">16:00–17:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 17:00 -->
+          <tr>
+            <td class="hh-time">17:00–18:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ TRIMESTRE 3 ═════════════════════════════════════════════ -->
+  <div class="section-title">Horário Semanal — Trimestre 3 (2026.3)</div>
+  <div class="schedule-grid">
+    <div class="schedule-header">📅 Trimestre 3 · 05/10 – 18/12/2026</div>
+    <div class="hh-wrap">
+      <table class="hh-table">
+        <thead>
+          <tr>
+            <th style="width:90px">Horário</th>
+            <th>Segunda</th>
+            <th>Terça</th>
+            <th>Quarta</th>
+            <th>Quinta</th>
+            <th>Sexta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 08:00 -->
+          <tr>
+            <td class="hh-time">08:00–09:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td rowspan="4"><div class="hh-class opt" style="height:100%;min-height:100px;flex-direction:column;">Políticas Públicas<br>de Saúde</div></td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr>
+            <td class="hh-time">09:00–10:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr>
+            <td class="hh-time">10:00–11:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td rowspan="2"><div class="hh-class" style="height:100%;min-height:50px;flex-direction:column;">Seminários</div></td>
+          </tr>
+          <tr>
+            <td class="hh-time">11:00–12:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr class="hh-sep"><td colspan="6"></td></tr>
+          <tr>
+            <td class="hh-time">12:00–13:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <!-- 13:00 -->
+          <tr>
+            <td class="hh-time">13:00–14:00</td>
+            <td class="hh-empty">—</td>
+            <td rowspan="4"><div class="hh-class opt" style="height:100%;min-height:100px;flex-direction:column;">Visualização<br>de Dados</div></td>
+            <td class="hh-empty">—</td>
+            <td rowspan="4"><div class="hh-class opt" style="height:100%;min-height:100px;flex-direction:column;">Aprendizado<br>de Máquina</div></td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr>
+            <td class="hh-time">14:00–15:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr>
+            <td class="hh-time">15:00–16:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+          <tr>
+            <td class="hh-time">16:00–17:00</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+            <td class="hh-empty">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TAB: MARCOS ═══════════════════════════════════════════════ -->
+<div id="tab-marcos" class="tab-panel">
+  <div class="section-title">Linha do Tempo — Marcos Obrigatórios</div>
+
+  <div class="timeline" id="timeline">
+
+    <div class="tl-item" data-id="proficiencia">
+      <div class="tl-num">1</div>
+      <div class="tl-body">
+        <div class="tl-title">Exame de Proficiência em Língua Estrangeira</div>
+        <div class="tl-desc">Aprovação em inglês (ou espanhol). Pré-requisito obrigatório para o Exame de Pré-Banca. Solicitar via SIGAA → Solicitações.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 Até fev/2027</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+          <a class="tl-link" href="https://sigaa.ufpb.br" target="_blank">🔗 SIGAA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" data-id="creditos">
+      <div class="tl-num">2</div>
+      <div class="tl-body">
+        <div class="tl-title">Integralização de Créditos (32 cr. mínimos)</div>
+        <div class="tl-desc">17 cr. obrigatórios + 15 cr. optativos + Estágio Docência (1 cr. prático). Após isso, matrícula em "Trabalho de Dissertação" todo período.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 Jun/2027</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+          <a class="tl-link" href="https://sigaa.ufpb.br" target="_blank">🔗 SIGAA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" data-id="prebanca">
+      <div class="tl-num">3</div>
+      <div class="tl-body">
+        <div class="tl-title">Exame de Pré-Banca (Qualificação do Mestrado)</div>
+        <div class="tl-desc">Pré-requisitos: todos os créditos integralizados + aprovação no exame de proficiência + CRA ≥ 7,0. Entregar requerimento à coordenação com pelo menos 20 dias de antecedência.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 Até ago/2027 (18 meses do ingresso)</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" data-id="producao">
+      <div class="tl-num">4</div>
+      <div class="tl-body">
+        <div class="tl-title">Produção Acadêmica (requisito para defesa)</div>
+        <div class="tl-desc"><strong>Opção A:</strong> 1 artigo completo (≥4 pág.) em congresso nacional/internacional com corpo editorial + submissão a periódico Qualis A1–B3.<br><strong>Opção B:</strong> Artigo com carta de aceitação definitiva em periódico Qualis A1–B3 (1ª autora).<br>⚠️ Verificar a Resolução PPGMDS Nº1/2022 sobre revistas predatórias no SIGAA.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 Antes da defesa</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+          <a class="tl-link" href="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf" target="_blank">🔗 Qualis CAPES</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" data-id="estagio">
+      <div class="tl-num">5</div>
+      <div class="tl-body">
+        <div class="tl-title">Estágio de Docência (obrigatório para bolsistas)</div>
+        <div class="tl-desc">1 crédito prático (30h), em 1 período letivo. Relatório avaliado pelo professor da disciplina e pelo orientador, aprovado pelo colegiado. Tutorial de cadastramento disponível no SIGAA → Procedimentos.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 Em 1 período letivo</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+          <a class="tl-link" href="https://sigaa.ufpb.br" target="_blank">🔗 Tutorial SIGAA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" data-id="defesa">
+      <div class="tl-num">6</div>
+      <div class="tl-body">
+        <div class="tl-title">Defesa da Dissertação</div>
+        <div class="tl-desc">Pré-requisitos: recomendação dos orientadores + aprovação na Pré-Banca + produção acadêmica + declaração de integridade em pesquisa. Requerimento com 20 dias de antecedência + dissertação + comprovação da produção. Banca: 2 orientadores (sem julgamento) + 2 especialistas + 2 suplentes. Conceitos: Aprovada / Insuficiente (90 dias para reelaboração) / Reprovada.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 Até fev/2028 (prorrog. até set/2028)</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" data-id="autodep">
+      <div class="tl-num">7</div>
+      <div class="tl-body">
+        <div class="tl-title">Autodepósito — Versão Final Corrigida</div>
+        <div class="tl-desc">Depositar a versão final corrigida da dissertação no Repositório Institucional da UFPB. A homologação do relatório final dos orientadores pelo colegiado só ocorre após essa entrega.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 90 dias após a defesa</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+          <a class="tl-link" href="https://repositorio.ufpb.br" target="_blank">🔗 Repositório UFPB</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" data-id="diploma">
+      <div class="tl-num">8</div>
+      <div class="tl-body">
+        <div class="tl-title">Expedição do Diploma</div>
+        <div class="tl-desc">Após a homologação do relatório final pelo colegiado, a coordenação encaminha o processo de expedição à PRPG.</div>
+        <div class="tl-meta">
+          <span class="tl-date">🗓 Após autodepósito</span>
+          <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
+          <a class="tl-link" href="https://www.prpg.ufpb.br" target="_blank">🔗 PRPG UFPB</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════ TAB: CRÉDITOS ═════════════════════════════════════════════ -->
+<div id="tab-creditos" class="tab-panel">
+  <div class="section-title">Progresso de Créditos</div>
+
+  <div class="progress-section">
+    <h4>📊 Acumulado por Trimestre</h4>
+
+    <div class="prog-row">
+      <div class="prog-label"><span>Créditos Obrigatórios (meta: 17)</span><span id="prog-obr-val">15/17</span></div>
+      <div class="prog-bar"><div class="prog-fill prog-obr" id="prog-obr-bar" style="width:88%"></div></div>
+    </div>
+
+    <div class="prog-row">
+      <div class="prog-label"><span>Créditos Optativos (meta: 15)</span><span id="prog-opt-val">15/15</span></div>
+      <div class="prog-bar"><div class="prog-fill prog-opt" id="prog-opt-bar" style="width:100%"></div></div>
+    </div>
+
+    <div class="prog-row">
+      <div class="prog-label"><span>Carga Horária Total (meta: 480h)</span><span>480h/480h</span></div>
+      <div class="prog-bar"><div class="prog-fill prog-time" style="width:100%"></div></div>
+    </div>
+  </div>
+
+  <div class="trim-card">
+    <div class="trim-header"><h3>📋 Detalhamento de Créditos por Trimestre</h3></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Trimestre</th><th>Período</th><th>Disciplinas</th><th>Cr. OBR</th><th>Cr. OPT</th><th>Total Cr.</th><th>C.H. Total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Trimestre 1</td><td>09/03–05/06/2026</td><td>5</td><td>10</td><td>3</td><td>13</td><td>195h</td></tr>
+          <tr class="row-opt"><td>Trimestre 2</td><td>01/07–18/09/2026</td><td>4</td><td>4</td><td>6</td><td>10</td><td>150h</td></tr>
+          <tr><td>Trimestre 3</td><td>05/10–18/12/2026</td><td>4</td><td>1</td><td>6</td><td>7</td><td>135h</td></tr>
+          <tr class="row-diss"><td>Estágio Docência</td><td>A definir</td><td>—</td><td>—</td><td>—</td><td>1 (prático)</td><td>30h</td></tr>
+          <tr style="background:#f0f4fb;font-weight:700;"><td>TOTAL</td><td></td><td>13 disc.</td><td>15</td><td>15</td><td>30 (+2 pendentes)</td><td>480h+</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="padding:.9rem 1.2rem; font-size:.84rem; color:var(--muted); border-top:1px solid var(--gray-bd);">
+      ⚠️ Faltam 2 créditos obrigatórios para completar a meta de 17 OBR. Verificar com orientadores quais disciplinas obrigatórias ainda precisam ser cursadas. O Estágio Docência (1 cr. prático) ainda não está contabilizado.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TAB: LINKS ════════════════════════════════════════════════ -->
+<div id="tab-links" class="tab-panel">
+  <div class="section-title">Links Úteis e Formulários</div>
+
+  <div class="links-grid">
+    <a class="link-card" href="https://sigaa.ufpb.br" target="_blank">
+      <div class="link-icon">🎓</div>
+      <div class="link-info"><h4>SIGAA UFPB — Portal Discente</h4><p>Matrícula, solicitações, histórico acadêmico, documentos do programa e procedimentos.</p></div>
+    </a>
+    <a class="link-card" href="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf" target="_blank">
+      <div class="link-icon">📑</div>
+      <div class="link-info"><h4>Qualis CAPES — Consulta de Periódicos</h4><p>Verificar estrato Qualis antes de submeter artigo. Exige periódico A1–B3 (Interdisciplinar).</p></div>
+    </a>
+    <a class="link-card" href="https://repositorio.ufpb.br" target="_blank">
+      <div class="link-icon">📦</div>
+      <div class="link-info"><h4>Repositório Institucional UFPB</h4><p>Autodepósito da versão final da dissertação (prazo: 90 dias após a defesa).</p></div>
+    </a>
+    <a class="link-card" href="https://www.prpg.ufpb.br" target="_blank">
+      <div class="link-icon">🏛</div>
+      <div class="link-info"><h4>PRPG UFPB — Pró-Reitoria de Pós-Graduação</h4><p>Informações gerais, regulamentos e processo de expedição de diploma.</p></div>
+    </a>
+    <a class="link-card" href="https://www.ccen.ufpb.br/ppgmds" target="_blank">
+      <div class="link-icon">🔬</div>
+      <div class="link-info"><h4>PPGMDS — Página do Programa</h4><p>Regulamentos, resoluções, editais e informações específicas do programa.</p></div>
+    </a>
+    <a class="link-card" href="https://lattes.cnpq.br" target="_blank">
+      <div class="link-icon">📋</div>
+      <div class="link-info"><h4>Lattes CNPq — Currículo</h4><p>Manter sempre atualizado com novas publicações, participações em eventos e produções.</p></div>
+    </a>
+    <a class="link-card" href="https://www-periodicos-capes-gov-br.ez15.periodicos.capes.gov.br" target="_blank">
+      <div class="link-icon">📚</div>
+      <div class="link-info"><h4>Portal de Periódicos CAPES</h4><p>Acesso a artigos, bases de dados e literatura científica com login UFPB.</p></div>
+    </a>
+    <div class="link-card" style="cursor:default; border-color: var(--gold);">
+      <div class="link-icon" style="background:var(--gold);">📂</div>
+      <div class="link-info"><h4>Documentos no SIGAA → Procedimentos</h4><p>Manual de Autodepósito · Tutorial Estágio Docência · Tutorial SIPAC · Manual Qualis/Scopus · Orientações Homologação · Resolução PPGMDS Nº1/2022</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TAB: ANOTAÇÕES ════════════════════════════════════════════ -->
+<div id="tab-notas" class="tab-panel">
+  <div class="section-title">Anotações Colaborativas</div>
+
+  <div class="notes-panel">
+    <div class="notes-header">
+      <span>✏️ Nova Anotação</span>
+    </div>
+    <div class="notes-body">
+      <div style="display:flex;gap:.8rem;margin-bottom:.7rem;flex-wrap:wrap;">
+        <input id="author-input" type="text" placeholder="Seu nome (ex.: Orientadora 1)" style="flex:1;min-width:160px;padding:.45rem .8rem;border:1.5px solid var(--gray-bd);border-radius:7px;font-family:inherit;font-size:.88rem;outline:none;">
+        <select id="category-input" style="padding:.45rem .8rem;border:1.5px solid var(--gray-bd);border-radius:7px;font-family:inherit;font-size:.88rem;outline:none;background:white;">
+          <option value="Geral">Geral</option>
+          <option value="Disciplina">Disciplina</option>
+          <option value="Prazo">Prazo</option>
+          <option value="Orientação">Orientação</option>
+          <option value="Alerta">⚠️ Alerta</option>
+          <option value="Sugestão">Sugestão</option>
+        </select>
+      </div>
+      <textarea id="note-text" class="notes-area" placeholder="Escreva aqui sua anotação, observação ou orientação…"></textarea>
+      <div class="note-actions">
+        <button class="btn btn-primary" onclick="saveNote()">💾 Salvar Anotação</button>
+        <button class="btn btn-outline" onclick="document.getElementById('note-text').value=''">🗑 Limpar</button>
+        <button class="btn btn-outline" onclick="exportNotes()">📥 Exportar Anotações</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-panel">
+    <div class="notes-header">
+      <span>📌 Anotações Salvas</span>
+      <span id="notes-count" style="font-size:.82rem;opacity:.75;font-weight:400;">0 anotação(ões)</span>
+    </div>
+    <div class="notes-body">
+      <div id="saved-notes" class="saved-notes">
+        <!-- Comentários carregados da nuvem via JavaScript -->
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<div class="footer-bar">
+  PPGMDS / UFPB · Cronograma Acadêmico 2026–2028 · Gerado automaticamente a partir do cronograma oficial
+</div>
+
+<script>
+// ── Tab switching ──────────────────────────────────
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── Status toggle ──────────────────────────────────
+function toggleStatus(btn) {
+  const states = [
+    { cls: 'status-pending', label: '⏳ Pendente' },
+    { cls: 'status-done',    label: '✅ Concluído' },
+    { cls: 'status-alert',   label: '🔴 Atenção' },
+  ];
+  const curr = states.findIndex(s => btn.classList.contains(s.cls));
+  const next = (curr + 1) % states.length;
+  states.forEach(s => btn.classList.remove(s.cls));
+  btn.classList.add(states[next].cls);
+  btn.textContent = states[next].label;
+}
+
+// ═══════════════════════════════════════════════════
+// COMENTÁRIOS NA NUVEM — JSONBin.io
+// -------------------------------------------------------
+// INSTRUÇÕES: Substitua BIN_ID e API_KEY pelos seus
+// valores obtidos em https://jsonbin.io (veja o guia).
+// ═══════════════════════════════════════════════════
+const BIN_ID  = '69f4979d36566621a812a3b8';
+const API_KEY = '$2a$10$mziYnx.raoebBdlY34DZaOmcrFIqUKb4T.uP/AYfzGnbk45UdV.Ba';
+
+const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const HEADERS = {
+  'Content-Type': 'application/json',
+  'X-Master-Key': API_KEY,
+  'X-Bin-Versioning': 'false'
+};
+
+let allNotes = [];
+
+// ── Carrega comentários do servidor ────────────────
+async function loadNotes() {
+  const el = document.getElementById('saved-notes');
+  el.innerHTML = '<div style="padding:1rem;color:var(--muted);font-size:.88rem;">⏳ Carregando comentários…</div>';
+  try {
+    const res = await fetch(JSONBIN_URL + '/latest', { headers: { 'X-Master-Key': API_KEY } });
+    const data = await res.json();
+    allNotes = data.record?.notes || [];
+    renderNotes();
+  } catch(e) {
+    el.innerHTML = '<div style="padding:1rem;color:#c00;font-size:.85rem;">⚠️ Não foi possível carregar os comentários. Verifique o BIN_ID e API_KEY.</div>';
+  }
+}
+
+// ── Salva lista inteira no servidor ───────────────
+async function persistNotes() {
+  await fetch(JSONBIN_URL, {
+    method: 'PUT',
+    headers: HEADERS,
+    body: JSON.stringify({ notes: allNotes })
+  });
+}
+
+// ── Renderiza lista na tela ────────────────────────
+function renderNotes() {
+  const el = document.getElementById('saved-notes');
+  if (allNotes.length === 0) {
+    el.innerHTML = '<div style="padding:1rem;color:var(--muted);font-size:.88rem;">Ainda não há comentários. Seja a primeira a escrever! 😊</div>';
+    updateCount(); return;
+  }
+  el.innerHTML = '';
+  [...allNotes].reverse().forEach((n, i) => {
+    const realIdx = allNotes.length - 1 - i;
+    const div = document.createElement('div');
+    div.className = 'note-item';
+    div.innerHTML = `
+      <div class="note-date">📅 ${n.date} · Categoria: <strong>${n.cat}</strong> · Por: <span class="note-author">${n.author}</span></div>
+      <div class="note-text">${n.text}</div>
+      <button class="note-del" onclick="deleteNote(${realIdx})">✕</button>
+    `;
+    el.appendChild(div);
+  });
+  updateCount();
+}
+
+// ── Salva novo comentário ──────────────────────────
+async function saveNote() {
+  const text   = document.getElementById('note-text').value.trim();
+  const author = document.getElementById('author-input').value.trim() || 'Anônimo';
+  const cat    = document.getElementById('category-input').value;
+  if (!text) { alert('Escreva algo antes de salvar!'); return; }
+  if (BIN_ID === 'SEU_BIN_ID_AQUI') {
+    alert('⚠️ Configure o BIN_ID e API_KEY no arquivo HTML antes de usar os comentários online.\n\nVeja o guia incluído para instruções passo a passo.');
+    return;
+  }
+
+  const btn = document.querySelector('.btn-primary');
+  btn.textContent = '⏳ Salvando…'; btn.disabled = true;
+
+  const now = new Date().toLocaleString('pt-BR');
+  allNotes.push({ date: now, cat, author, text: text.replace(/</g,'&lt;') });
+
+  try {
+    await persistNotes();
+    document.getElementById('note-text').value = '';
+    renderNotes();
+  } catch(e) {
+    alert('Erro ao salvar. Tente novamente.');
+  }
+  btn.textContent = '💾 Salvar Comentário'; btn.disabled = false;
+}
+
+// ── Apaga um comentário ────────────────────────────
+async function deleteNote(idx) {
+  if (!confirm('Apagar este comentário?')) return;
+  allNotes.splice(idx, 1);
+  await persistNotes();
+  renderNotes();
+}
+
+function updateCount() {
+  document.getElementById('notes-count').textContent = allNotes.length + ' comentário(s)';
+}
+
+function exportNotes() {
+  let txt = 'COMENTÁRIOS — CRONOGRAMA MESTRADO PPGMDS/UFPB\n' + '='.repeat(50) + '\n\n';
+  allNotes.forEach((n, i) => {
+    txt += `[${i+1}] ${n.date} · ${n.cat} · Por: ${n.author}\n${n.text}\n\n`;
+  });
+  const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'comentarios_cronograma_ppgmds.txt'; a.click();
+}
+
+// Init
+loadNotes();
+</script>
+</body>
+</html>
