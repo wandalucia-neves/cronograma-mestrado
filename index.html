@@ -620,7 +620,7 @@
     </div>
   </div>
 
-  <div class="alert-banner"><span>⚠️</span><div><strong>Nota:</strong> Epidemiologia e Saúde — em dias de Seminário (1×/mês) a aula é remanejada para a tarde da sexta-feira. | Modelagem Epidemiológica: exclusivamente entre 01/04 e 29/04/2026. | Estágio Docência I (1 cr. prático, 30h) ainda precisa ser inserido no cronograma.</div></div>
+  <div class="alert-banner"><span>⚠️</span><div><strong>Nota:</strong> Epidemiologia e Saúde — em dias de Seminário (1×/mês) a aula é remanejada para a tarde da sexta-feira. | Modelagem Epidemiológica: exclusivamente entre 01/04 e 29/04/2026. | Estágio Docência I (2 cr. práticos, 30h) — confirmar período com as orientadoras.</div></div>
 </div>
 
 <!-- ═══════ TAB: HORÁRIO ══════════════════════════════════════════════ -->
@@ -957,6 +957,53 @@
       </table>
     </div>
   </div>
+
+  <!-- ══ ESTÁGIO DOCÊNCIA ════════════════════════════════════════════ -->
+  <div class="section-title">Estágio de Docência — Período a Definir</div>
+  <div class="schedule-grid">
+    <div class="schedule-header" style="background:linear-gradient(135deg,#8a5700,#c08020);">📝 Estágio de Docência · 2 cr. OBR · 30h · Preencha o período e horários abaixo</div>
+    <div style="padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:.9rem;">
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+        <div style="flex:1;min-width:200px;">
+          <label style="font-size:.8rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.3rem;">📅 Período (ex.: 2027.1 · Mar–Jun/2027)</label>
+          <input type="text" id="estagio-periodo" placeholder="Ex.: 2027.1 — Março a Junho de 2027"
+            style="width:100%;padding:.5rem .8rem;border:1.5px solid var(--gold);border-radius:7px;font-family:inherit;font-size:.88rem;outline:none;background:var(--amber);">
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <label style="font-size:.8rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.3rem;">🏫 Disciplina / Professor Supervisor</label>
+          <input type="text" id="estagio-disciplina" placeholder="Ex.: Estatística Básica — Prof. Fulano"
+            style="width:100%;padding:.5rem .8rem;border:1.5px solid var(--gold);border-radius:7px;font-family:inherit;font-size:.88rem;outline:none;background:var(--amber);">
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size:.8rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.5rem;">⏰ Marque os dias e horários da semana:</label>
+        <div style="overflow-x:auto;">
+          <table class="hh-table" id="estagio-grade">
+            <thead>
+              <tr>
+                <th style="width:90px">Horário</th>
+                <th><input type="checkbox" id="chk-seg" onchange="toggleEstagioDia('seg',this.checked)"> Segunda</th>
+                <th><input type="checkbox" id="chk-ter" onchange="toggleEstagioDia('ter',this.checked)"> Terça</th>
+                <th><input type="checkbox" id="chk-qua" onchange="toggleEstagioDia('qua',this.checked)"> Quarta</th>
+                <th><input type="checkbox" id="chk-qui" onchange="toggleEstagioDia('qui',this.checked)"> Quinta</th>
+                <th><input type="checkbox" id="chk-sex" onchange="toggleEstagioDia('sex',this.checked)"> Sexta</th>
+              </tr>
+            </thead>
+            <tbody id="estagio-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:.7rem;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="salvarEstagio()" style="background:var(--gold);border:none;">💾 Salvar horário do Estágio</button>
+        <button class="btn btn-outline" onclick="limparEstagio()">🗑 Limpar</button>
+      </div>
+
+      <div id="estagio-resumo" style="display:none;background:var(--amber);border-left:4px solid var(--gold);border-radius:7px;padding:.8rem 1rem;font-size:.88rem;"></div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════ TAB: MARCOS ═══════════════════════════════════════════════ -->
@@ -982,7 +1029,7 @@
       <div class="tl-num">2</div>
       <div class="tl-body">
         <div class="tl-title">Integralização de Créditos (32 cr. mínimos)</div>
-        <div class="tl-desc">17 cr. obrigatórios + 15 cr. optativos + Estágio Docência (1 cr. prático). Após isso, matrícula em "Trabalho de Dissertação" todo período.</div>
+        <div class="tl-desc">17 cr. obrigatórios + 15 cr. optativos + Estágio Docência (2 cr. práticos). Após isso, matrícula em "Trabalho de Dissertação" todo período.</div>
         <div class="tl-meta">
           <span class="tl-date">🗓 Jun/2027</span>
           <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
@@ -1007,11 +1054,60 @@
       <div class="tl-num">4</div>
       <div class="tl-body">
         <div class="tl-title">Produção Acadêmica (requisito para defesa)</div>
-        <div class="tl-desc"><strong>Opção A:</strong> 1 artigo completo (≥4 pág.) em congresso nacional/internacional com corpo editorial + submissão a periódico Qualis A1–B3.<br><strong>Opção B:</strong> Artigo com carta de aceitação definitiva em periódico Qualis A1–B3 (1ª autora).<br>⚠️ Verificar a Resolução PPGMDS Nº1/2022 sobre revistas predatórias no SIGAA.</div>
+        <div class="tl-desc">
+          Este é um dos pontos mais importantes e que exige atenção antecipada. Para pedir a defesa, você precisa de uma das duas opções abaixo:<br><br>
+          <strong>Opção A:</strong><br>
+          • Publicar ao menos 1 artigo completo (mínimo 4 páginas) em congresso nacional ou internacional com corpo editorial, <em>E</em><br>
+          • Submeter 1 artigo completo a periódico qualificado Qualis Interdisciplinar A1 a B3<br><br>
+          <strong>Opção B (alternativa):</strong><br>
+          • Ter artigo científico completo, com você como primeira autora, com carta de aceitação definitiva em periódico Qualis Interdisciplinar A1 a B3<br><br>
+          <span style="background:#fff4dc;border-left:3px solid #E8A020;display:block;padding:.5rem .8rem;border-radius:0 6px 6px 0;margin-top:.3rem;">⚠️ A Resolução PPGMDS Nº1/2022 sobre revistas predatórias está disponível no SIGAA — vale a leitura para não correr risco de publicar em veículo que o programa não aceite.</span>
+        </div>
         <div class="tl-meta">
           <span class="tl-date">🗓 Antes da defesa</span>
           <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
           <a class="tl-link" href="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf" target="_blank">🔗 Qualis CAPES</a>
+        </div>
+
+        <div style="margin-top:1rem;border-top:1px solid var(--gray-bd);padding-top:.9rem;">
+          <div style="font-weight:700;color:var(--navy);font-size:.88rem;margin-bottom:.7rem;">📅 Cronograma sugerido de produção acadêmica</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem;">
+            <div style="display:flex;gap:.8rem;align-items:center;">
+              <div style="min-width:32px;height:32px;background:var(--teal);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">1</div>
+              <div>
+                <div style="font-weight:700;font-size:.88rem;color:var(--navy);">Definição do tema do artigo</div>
+                <div style="font-size:.8rem;color:var(--muted);">🗓 Prazo sugerido: dezembro/2026</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:center;">
+              <div style="min-width:32px;height:32px;background:var(--teal);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">2</div>
+              <div>
+                <div style="font-weight:700;font-size:.88rem;color:var(--navy);">Versão preliminar do artigo</div>
+                <div style="font-size:.8rem;color:var(--muted);">🗓 Prazo sugerido: fevereiro/2027</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:center;">
+              <div style="min-width:32px;height:32px;background:var(--teal);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">3</div>
+              <div>
+                <div style="font-weight:700;font-size:.88rem;color:var(--navy);">Submissão do artigo (Opção A ou B)</div>
+                <div style="font-size:.8rem;color:var(--muted);">🗓 Prazo sugerido: junho/2027</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:center;">
+              <div style="min-width:32px;height:32px;background:var(--teal);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">4</div>
+              <div>
+                <div style="font-weight:700;font-size:.88rem;color:var(--navy);">Publicação em congresso (Opção A)</div>
+                <div style="font-size:.8rem;color:var(--muted);">🗓 Prazo sugerido: junho/2027</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.8rem;align-items:center;">
+              <div style="min-width:32px;height:32px;background:var(--gold);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">5</div>
+              <div>
+                <div style="font-weight:700;font-size:.88rem;color:var(--navy);">Confirmação da produção para defesa</div>
+                <div style="font-size:.8rem;color:var(--muted);">🗓 Prazo sugerido: novembro/2027</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1020,7 +1116,7 @@
       <div class="tl-num">5</div>
       <div class="tl-body">
         <div class="tl-title">Estágio de Docência (obrigatório para bolsistas)</div>
-        <div class="tl-desc">1 crédito prático (30h), em 1 período letivo. Relatório avaliado pelo professor da disciplina e pelo orientador, aprovado pelo colegiado. Tutorial de cadastramento disponível no SIGAA → Procedimentos.</div>
+        <div class="tl-desc">2 créditos práticos (30h), em 1 período letivo. Relatório avaliado pelo professor da disciplina e pelo orientador, aprovado pelo colegiado. Tutorial de cadastramento disponível no SIGAA → Procedimentos.</div>
         <div class="tl-meta">
           <span class="tl-date">🗓 Em 1 período letivo</span>
           <button class="status-toggle status-pending" onclick="toggleStatus(this)">⏳ Pendente</button>
@@ -1104,13 +1200,13 @@
           <tr><td>Trimestre 1</td><td>09/03–05/06/2026</td><td>5</td><td>10</td><td>3</td><td>13</td><td>195h</td></tr>
           <tr class="row-opt"><td>Trimestre 2</td><td>01/07–18/09/2026</td><td>4</td><td>4</td><td>6</td><td>10</td><td>150h</td></tr>
           <tr><td>Trimestre 3</td><td>05/10–18/12/2026</td><td>4</td><td>1</td><td>6</td><td>7</td><td>135h</td></tr>
-          <tr class="row-diss"><td>Estágio Docência</td><td>A definir</td><td>—</td><td>—</td><td>—</td><td>1 (prático)</td><td>30h</td></tr>
-          <tr style="background:#f0f4fb;font-weight:700;"><td>TOTAL</td><td></td><td>13 disc.</td><td>15</td><td>15</td><td>30 (+2 pendentes)</td><td>480h+</td></tr>
+          <tr class="row-obr"><td>Estágio Docência</td><td>A definir</td><td>—</td><td>2</td><td>—</td><td>2 (prático)</td><td>30h</td></tr>
+          <tr style="background:#f0f4fb;font-weight:700;"><td>TOTAL</td><td></td><td>13 disc.</td><td>17</td><td>15</td><td>32 ✅</td><td>480h+</td></tr>
         </tbody>
       </table>
     </div>
-    <div style="padding:.9rem 1.2rem; font-size:.84rem; color:var(--muted); border-top:1px solid var(--gray-bd);">
-      ⚠️ Faltam 2 créditos obrigatórios para completar a meta de 17 OBR. Verificar com orientadores quais disciplinas obrigatórias ainda precisam ser cursadas. O Estágio Docência (1 cr. prático) ainda não está contabilizado.
+    <div style="padding:.9rem 1.2rem; font-size:.84rem; color:#155724; background:#d4edda; border-top:1px solid var(--gray-bd);">
+      ✅ Com o Estágio de Docência (2 cr. práticos), todos os 32 créditos exigidos pelo programa estarão integralizados. Confirmar com as orientadoras o período em que o Estágio será realizado.
     </div>
   </div>
 </div>
@@ -1340,6 +1436,87 @@ function exportNotes() {
 
 // Init
 loadNotes();
+
+// ── Estágio Docência — grade interativa ────────────
+const HORAS = ['07:00–08:00','08:00–09:00','09:00–10:00','10:00–11:00','11:00–12:00','12:00–13:00','13:00–14:00','14:00–15:00','15:00–16:00','16:00–17:00','17:00–18:00'];
+const DIAS  = ['seg','ter','qua','qui','sex'];
+let estSel  = {};
+
+function buildEstagioGrade() {
+  const tb = document.getElementById('estagio-tbody');
+  if (!tb) return;
+  tb.innerHTML = '';
+  HORAS.forEach(h => {
+    const tr = document.createElement('tr');
+    let html = `<td class="hh-time">${h}</td>`;
+    DIAS.forEach(d => {
+      const checked = estSel[d+h] ? 'checked' : '';
+      html += `<td style="cursor:pointer;" onclick="toggleCell('${d}','${h}',this)">
+        <div id="cell-${d}-${h.replace(/[^0-9]/g,'')}" style="width:100%;height:100%;min-height:32px;display:flex;align-items:center;justify-content:center;border-radius:4px;${estSel[d+h]?'background:#fff4dc;border:1.5px solid #E8A020;font-size:.75rem;font-weight:700;color:#7a4a00;':''}">
+          ${estSel[d+h] ? '✓' : ''}
+        </div></td>`;
+    });
+    tr.innerHTML = html;
+    tb.appendChild(tr);
+  });
+}
+
+function toggleCell(dia, hora, td) {
+  const key = dia + hora;
+  estSel[key] = !estSel[key];
+  buildEstagioGrade();
+}
+
+function toggleEstagioDia(dia, on) {
+  HORAS.forEach(h => { estSel[dia+h] = on; });
+  buildEstagioGrade();
+}
+
+function salvarEstagio() {
+  const periodo    = document.getElementById('estagio-periodo').value.trim();
+  const disciplina = document.getElementById('estagio-disciplina').value.trim();
+  const selecionados = [];
+  DIAS.forEach(d => {
+    const blocos = HORAS.filter(h => estSel[d+h]);
+    if (blocos.length) {
+      const nomes = {seg:'Segunda',ter:'Terça',qua:'Quarta',qui:'Quinta',sex:'Sexta'};
+      selecionados.push(`${nomes[d]}: ${blocos[0].split('–')[0]}–${blocos[blocos.length-1].split('–')[1]}`);
+    }
+  });
+  const resumo = document.getElementById('estagio-resumo');
+  resumo.style.display = 'block';
+  resumo.innerHTML = `<strong>✅ Estágio de Docência salvo!</strong><br>
+    ${periodo ? '📅 Período: ' + periodo + '<br>' : ''}
+    ${disciplina ? '🏫 Disciplina: ' + disciplina + '<br>' : ''}
+    ${selecionados.length ? '⏰ Horários: ' + selecionados.join(' · ') : '⚠️ Nenhum horário selecionado.'}`;
+  localStorage.setItem('estagio_ppgmds', JSON.stringify({periodo, disciplina, sel: estSel}));
+}
+
+function limparEstagio() {
+  estSel = {};
+  document.getElementById('estagio-periodo').value = '';
+  document.getElementById('estagio-disciplina').value = '';
+  document.getElementById('estagio-resumo').style.display = 'none';
+  DIAS.forEach(d => { const el = document.getElementById('chk-'+d); if(el) el.checked = false; });
+  buildEstagioGrade();
+  localStorage.removeItem('estagio_ppgmds');
+}
+
+function loadEstagioLocal() {
+  try {
+    const saved = localStorage.getItem('estagio_ppgmds');
+    if (saved) {
+      const data = JSON.parse(saved);
+      estSel = data.sel || {};
+      if (data.periodo)    document.getElementById('estagio-periodo').value    = data.periodo;
+      if (data.disciplina) document.getElementById('estagio-disciplina').value = data.disciplina;
+    }
+  } catch(e) {}
+  buildEstagioGrade();
+}
+
+document.addEventListener('DOMContentLoaded', loadEstagioLocal);
+setTimeout(loadEstagioLocal, 300);
 </script>
 </body>
 </html>
